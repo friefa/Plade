@@ -1,10 +1,9 @@
 <?php
 
-namespace BABOOK\lib\module;
+abstract class Module {
+    public $ModuleConfig;
 
-class Module {
-    public $ModulePath;
-    public $ModuleName;
+    abstract protected function render(array $params);
 }
 
 ?>

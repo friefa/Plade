@@ -1,0 +1,12 @@
+{
+    "ModuleName":"headerModule",
+    "Developer":"Fabian Friedl",
+    "Version":"0.0.1",
+    "Entry":"headerModule.php",
+    "EntryClass":"HeaderModule",
+    "Dependencies":
+    {
+        "bootstrap.css":"css",
+        "bootstrap.js":"js"
+    }
+}
