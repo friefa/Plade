@@ -11,7 +11,7 @@ class ModuleLoader
             $moduleConfig = new ModuleConfig();
             $moduleConfig->Init($name);
 
-            include("modules/".$name."/".$moduleConfig->Entry);
+            include_once("modules/".$name."/".$moduleConfig->Entry);
 
             $class = $moduleConfig->EntryClass;
             $module = new $class();            

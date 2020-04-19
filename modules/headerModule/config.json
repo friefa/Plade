@@ -6,7 +6,5 @@
     "EntryClass":"HeaderModule",
     "Dependencies":
     {
-        "bootstrap.css":"css",
-        "bootstrap.js":"js"
     }
 }
