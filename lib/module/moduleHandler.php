@@ -25,6 +25,7 @@ class ModuleHandler
         $dependenciesString = $moduleDependencySolver->Solve($this->LoadedModules);
         
         $this->LoadedModules["headerModule"]->render(["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
+        $this->LoadedModules["footerModule"]->render([]);
     }
 }
 

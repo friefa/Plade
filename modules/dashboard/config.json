@@ -1,0 +1,10 @@
+{
+    "ModuleName":"dashboard",
+    "Developer":"Fabian Friedl",
+    "Version":"0.0.1",
+    "Entry":"dashboard.php",
+    "EntryClass":"Dashboard",
+    "Dependencies":
+    {
+    }
+}
