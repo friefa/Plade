@@ -1,10 +1,16 @@
 <?php
 
+/**
+ * This class forms an artificial enumeration with conversion methods.
+ */
 abstract class ModuleDependencyType
 {
     const CSS = 0;
     const JS = 1;
 
+    /**
+     * This method returns the dependency type of a given string.
+     */
     public static function GetType(string $type) : int
     {
         $result = -1;
@@ -21,6 +27,9 @@ abstract class ModuleDependencyType
         return $result;
     }
 
+    /**
+     * This static method returns the appropriate HTML tag for a dependency.
+     */
     public static function GetDependencyString(int $type, string $module, string $dependencyName) : string
     {
         $result = "";
