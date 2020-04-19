@@ -1,4 +1,11 @@
 <?php
+/**
+ * BABOOK
+ * ModuleDependencyType
+ * Fabian Friedl
+ * 19.04.2020
+ * All rights reserved.
+ */
 
 /**
  * This class forms an artificial enumeration with conversion methods.
