@@ -1,10 +1,25 @@
 <?php
+/**
+ * BABOOK
+ * ModuleLoader
+ * Fabian Friedl
+ * 19.04.2020
+ * All rights reserved.
+ */
 
+// Implementations
 include_once("lib/module/moduleConfig.php");
 
+/**
+ * This object can load modules and their configurations.
+ */
 class ModuleLoader
 {
-    public function Load(string $name)
+    /**
+     * This method loads a module by its name.
+     * If the module could not be found or loaded null is returned.
+     */
+    public function Load(string $name) : object
     {
         if (is_dir("modules/".$name))
         {
