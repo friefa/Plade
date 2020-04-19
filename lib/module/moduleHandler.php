@@ -45,7 +45,7 @@ class ModuleHandler
 
         // Hier werden die Module angezeigt
         $this->LoadedModules["headerModule"]->render($params);
-        $this->LoadedModules["dashboard"]->render($params);
+        $this->LoadedModules["login"]->render($params);
         $this->LoadedModules["footerModule"]->render($params);
     }
 }
