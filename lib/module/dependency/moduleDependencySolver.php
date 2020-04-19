@@ -68,7 +68,7 @@ class ModuleDependencySolver
                 }
             }
         }
-        
+
         foreach ($targetModule->ModuleConfig->Dependencies as $dependency)
         {
             if (!in_array($dependency->FileName, $addedDependencies))

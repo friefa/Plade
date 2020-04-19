@@ -40,7 +40,7 @@ class ModuleHandler
 
         // Hier werden die Abhängigkeiten geladen.
         $moduleDependencySolver = new ModuleDependencySolver();
-        $dependenciesString = $moduleDependencySolver->SolveLocal($this->LoadedModules["dashboard"], $this->LoadedModules);
+        $dependenciesString = $moduleDependencySolver->SolveLocal($this->LoadedModules["login"], $this->LoadedModules);
         $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
 
         // Hier werden die Module angezeigt
