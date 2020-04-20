@@ -1,0 +1,10 @@
+{
+    "ModuleName":"footerModule",
+    "Developer":"Fabian Friedl",
+    "Version":"0.0.1",
+    "Entry":"footerModule.php",
+    "EntryClass":"FooterModule",
+    "Dependencies":
+    {
+    }
+}
