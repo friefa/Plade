@@ -1,0 +1,16 @@
+{
+    "ModuleName":"login",
+    "Developer":"Fabian Friedl",
+    "Version":"0.0.1",
+    "Entry":"login.php",
+    "EntryClass":"Login",
+    "Dependencies":
+    {
+		"jquery.js":"js",
+        "fas.css":"css",
+        "fas.js":"js",
+        "bootstrap.css":"css",
+        "bootstrap.js":"js",
+        "login.css":"css"
+    }
+}

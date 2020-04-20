@@ -6,5 +6,10 @@
     "EntryClass":"Dashboard",
     "Dependencies":
     {
+		"jquery.js":"js",
+        "fas.css":"css",
+        "fas.js":"js",
+        "bootstrap.css":"css",
+        "bootstrap.js":"js"
     }
 }
