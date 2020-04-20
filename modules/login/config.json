@@ -6,6 +6,7 @@
     "EntryClass":"Login",
     "Dependencies":
     {
+		"jquery.js":"js",
         "fas.css":"css",
         "fas.js":"js",
         "bootstrap.css":"css",
