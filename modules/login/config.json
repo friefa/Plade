@@ -6,11 +6,7 @@
     "EntryClass":"Login",
     "Dependencies":
     {
-		"jquery.js":"js",
-        "fas.css":"css",
-        "fas.js":"js",
-        "bootstrap.css":"css",
-        "bootstrap.js":"js",
-        "login.css":"css"
+		"login.css":"css",
+		"https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js":"cdn"
     }
 }
