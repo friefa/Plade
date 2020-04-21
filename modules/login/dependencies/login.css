@@ -39,6 +39,7 @@ body, html
 {
     font-size: 48px;
     margin-bottom: 20px;
+    color: var(--colorLight);
 }
 
 #login
@@ -49,23 +50,19 @@ body, html
 #middleContainer
 {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
     
-    width: 50%;
-    height: 50%;
+    min-width: 500px;
+    width: fit-content;
+    height: fit-content;
 
-    transform: translateX(-50%) translateY(-50%);
+    bottom: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(50%);
 }
 
 #loginForm
 {
-    box-shadow: 0px 0px 2px var(--colorDark);
     border-radius: 10px;
-
-    min-width: 500px;
-    width: fit-content;
-    height: fit-content;
 
     padding: 50px;
     padding-top: 10px;
@@ -74,22 +71,7 @@ body, html
     background-color: var(--colorLight);
 }
 
-.spinnerShow
+form
 {
-    position: absolute;
-
     width: 100%;
-    height: 100%;
-
-    top: 0px;
-    left: 0px;
-
-    background-color: var(--colorDark);
-}
-
-.spinner-border
-{
-    display: block !important;
-    height: 50px;
-    width: 50px;
 }
