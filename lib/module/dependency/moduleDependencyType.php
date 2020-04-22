@@ -37,19 +37,57 @@ abstract class ModuleDependencyType
     /**
      * This static method returns the appropriate HTML tag for a dependency.
      */
-    public static function GetDependencyString(int $type, string $module, string $dependencyName) : string
+    public static function GetDependencyString(string $module, object $dependency) : string
     {
         $result = "";
 
-        switch ($type)
+        switch ($dependency->Type)
         {
             case ModuleDependencyType::CSS:
-                $result = '<link rel="stylesheet" href="modules/'.$module.'/dependencies/'.$dependencyName.'">';
+                $result = self::GetDependencyStringCss($module, $dependency);
                 break;
 
             case ModuleDependencyType::JS:
-                $result = '<script src="modules/'.$module.'/dependencies/'.$dependencyName.'"></script>';
+                $result = self::GetDependencyStringJs($module, $dependency);
                 break;
+        }
+
+        return $result;
+    }
+
+    /**
+     * This private method specifies the appropriate HTML head tag for the modular dependency of a CSS file.
+     */
+    private static function GetDependencyStringCss(string $module, object $dependency) : string
+    {
+        $result = '';
+
+        if ($dependency->CDN)
+        {
+            $result = '<link rel="stylesheet" href="'.$dependency->FileName.'">';
+        }
+        else
+        {
+            $result = '<link rel="stylesheet" href="modules/'.$module.'/dependencies/'.$dependency->FileName.'">';
+        }
+
+        return $result;
+    }
+
+    /**
+     * This private method specifies the appropriate HTML head tag for the modular dependency of a JS file.
+     */
+    private static function GetDependencyStringJs(string $module, object $dependency) : string
+    {
+        $result = '';
+
+        if ($dependency->CDN)
+        {
+            $result = '<script src="'.$dependency->FileName.'"></script>';
+        }
+        else
+        {
+            $result = '<script src="modules/'.$module.'/dependencies/'.$dependency->FileName.'"></script>';
         }
 
         return $result;

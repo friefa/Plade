@@ -5,3 +5,4 @@ Features:
 - Easily programmable and configurable PHP modules
 - Easy creation of dependencies (JS and CSS)
 - Automatic loading of modules and resolving their interdependencies
+- Content-Delivery-Network (CDN) dependency support with automatic detection
