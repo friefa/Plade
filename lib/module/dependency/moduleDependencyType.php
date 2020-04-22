@@ -14,6 +14,7 @@ abstract class ModuleDependencyType
 {
     const CSS = 0;
     const JS = 1;
+    const JSModule = 2;
 
     /**
      * This method returns the dependency type of a given string.
@@ -29,6 +30,10 @@ abstract class ModuleDependencyType
         else if ($type == "js")
         {
             $result = ModuleDependencyType::JS;
+        }
+        else if ($type == "jsmodule")
+        {
+            $result = ModuleDependencyType::JSModule;
         }
 
         return $result;
@@ -49,6 +54,10 @@ abstract class ModuleDependencyType
 
             case ModuleDependencyType::JS:
                 $result = self::GetDependencyStringJs($module, $dependency);
+                break;
+
+            case ModuleDependencyType::JSModule:
+                $result = self::GetDependencyStringJsModule($module, $dependency);
                 break;
         }
 
@@ -88,6 +97,25 @@ abstract class ModuleDependencyType
         else
         {
             $result = '<script src="modules/'.$module.'/dependencies/'.$dependency->FileName.'"></script>';
+        }
+
+        return $result;
+    }
+
+    /**
+     * This private method specifies the appropriate HTML head tag for the modular dependency of a JS Module file.
+     */
+    private static function GetDependencyStringJsModule(string $module, object $dependency) : string
+    {
+        $result = '';
+
+        if ($dependency->CDN)
+        {
+            $result = '<script type="module" src="'.$dependency->FileName.'"></script>';
+        }
+        else
+        {
+            $result = '<script type="module" src="modules/'.$module.'/dependencies/'.$dependency->FileName.'"></script>';
         }
 
         return $result;

@@ -6,7 +6,10 @@
     "EntryClass":"Login",
     "Dependencies":
     {
-		"login.css":"css",
-    "https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js":"js"
+      "material-components-web.min.js":"js",
+      "https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css":"css",
+      "https://fonts.googleapis.com/icon?family=Material+Icons":"css",
+      "https://unpkg.com/react@16/umd/react.production.min.js":"js",
+      "login.js":"jsmodule"
     }
 }
