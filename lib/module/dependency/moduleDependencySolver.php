@@ -26,7 +26,7 @@ class ModuleDependencySolver
         {
             foreach ($module->ModuleConfig->Dependencies as $dependency)
             {
-                if (!in_array($dependency->FileName, $addedDependencies) && $dependency->OwnedBy($module->ModuleConfig->Name))
+                if (!in_array($dependency->FileName, $addedDependencies) && ($dependency->OwnedBy($module->ModuleConfig->Name) || $dependency->CDN))
                 {
                     $result .= ModuleDependencyType::GetDependencyString($dependency->Type, $module->ModuleConfig->Name, $dependency->FileName) . PHP_EOL;
                     $addedDependencies[] = $dependency->FileName;
@@ -61,7 +61,7 @@ class ModuleDependencySolver
         {
             foreach ($module->ModuleConfig->Dependencies as $dependency)
             {
-                if (!in_array($dependency->FileName, $addedDependencies) && $dependency->OwnedBy($module->ModuleConfig->Name) && $targetModule->ModuleConfig->HasDependency($dependency))
+                if (!in_array($dependency->FileName, $addedDependencies) && ($dependency->OwnedBy($module->ModuleConfig->Name) || $dependency->CDN) && $targetModule->ModuleConfig->HasDependency($dependency))
                 {
                     $result .= ModuleDependencyType::GetDependencyString($dependency->Type, $module->ModuleConfig->Name, $dependency->FileName) . PHP_EOL;
                     $addedDependencies[] = $dependency->FileName;
