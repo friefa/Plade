@@ -9,7 +9,7 @@
 
 // Implementations
 include_once('lib/module/dependency/moduleDependencyType.php');
-include_once('lib/utils/stringUtils.php');
+include_once('lib/utils/urlUtils.php');
 
 /**
  * This object represents a modular dependency.
@@ -29,7 +29,7 @@ class ModuleDependency
         $this->FileName = $dependencyName;
         $this->Type = ModuleDependencyType::GetType($dependencyType);
 
-        if (StringUtils::StartsWith($dependencyName, 'http'))
+        if (UrlUtils::IsValid($dependencyName))
         {
             $this->CDN = true;
         }

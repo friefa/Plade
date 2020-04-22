@@ -37,18 +37,18 @@ abstract class ModuleDependencyType
     /**
      * This static method returns the appropriate HTML tag for a dependency.
      */
-    public static function GetDependencyString(int $type, string $module, object $dependency) : string
+    public static function GetDependencyString(string $module, object $dependency) : string
     {
         $result = "";
 
-        switch ($type)
+        switch ($dependency->Type)
         {
             case ModuleDependencyType::CSS:
-                $result = self::GetDependencyStringCss($type, $module, $dependency);
+                $result = self::GetDependencyStringCss($module, $dependency);
                 break;
 
             case ModuleDependencyType::JS:
-                $result = self::GetDependencyStringJs($type, $module, $dependency);
+                $result = self::GetDependencyStringJs($module, $dependency);
                 break;
         }
 
@@ -58,7 +58,7 @@ abstract class ModuleDependencyType
     /**
      * This private method specifies the appropriate HTML head tag for the modular dependency of a CSS file.
      */
-    private static function GetDependencyStringCss(int $type, string $module, object $dependency) : string
+    private static function GetDependencyStringCss(string $module, object $dependency) : string
     {
         $result = '';
 
@@ -77,7 +77,7 @@ abstract class ModuleDependencyType
     /**
      * This private method specifies the appropriate HTML head tag for the modular dependency of a JS file.
      */
-    private static function GetDependencyStringJs(int $type, string $module, object $dependency) : string
+    private static function GetDependencyStringJs(string $module, object $dependency) : string
     {
         $result = '';
 

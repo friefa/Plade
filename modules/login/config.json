@@ -7,6 +7,6 @@
     "Dependencies":
     {
 		"login.css":"css",
-		"https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js":"js"
+    "https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js":"js"
     }
 }
