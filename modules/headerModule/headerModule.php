@@ -18,12 +18,12 @@ class HeaderModule extends Module
     /**
      * This method displays the module on the page.
      */
-    function render(array $params)
+    function render(array $params) : string
     {
         $template = file_get_contents("modules/headerModule/templates/header.html");
         parent::InsertReplacements($template, $params);
 
-        echo $template;
+        return $template;
     }
 }
 

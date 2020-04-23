@@ -44,9 +44,9 @@ class ModuleHandler
         $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
 
         // Hier werden die Module angezeigt
-        $this->LoadedModules["headerModule"]->render($params);
-        $this->LoadedModules["login"]->render($params);
-        $this->LoadedModules["footerModule"]->render($params);
+        echo $this->LoadedModules["headerModule"]->render($params);
+        echo $this->LoadedModules["login"]->render($params);
+        echo $this->LoadedModules["footerModule"]->render($params);
     }
 }
 

@@ -18,7 +18,7 @@ abstract class Module
     /**
      * This abstract method represents a module.
      */
-    abstract protected function render(array $params);
+    abstract protected function render(array $params) : string;
 
     /**
      * This method inserts all values into a template.
