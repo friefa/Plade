@@ -6,6 +6,8 @@
     "EntryClass":"Box",
     "Dependencies":
     {
-      "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css":"css"
+        "https://fonts.googleapis.com/icon?family=Material+Icons":"css",
+        "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css":"css",
+        "https://code.getmdl.io/1.3.0/material.min.js":"jsdefer"
     }
 }
