@@ -36,6 +36,20 @@ abstract class Module
         return $template;
     }
 
+    protected function InsertHooks(string &$template, array $dependencies, array $params)
+    {
+        foreach ($dependencies as $dependency)
+        {
+            if ($dependency->Type == ModuleDependencyType::Module)
+            {
+                $hook = "{hook.".$dependency->FileName."}";
+                $module = self::GetByName($dependency->FileName, ModuleHandler::$LoadedModules)->render($params);
+
+                $template = str_replace($hook, $module, $template);
+            }
+        }
+    }
+
     /**
      * This method search for a module in an array by its name.
      */
