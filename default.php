@@ -13,7 +13,14 @@ include_once("lib/module/moduleLoader.php");
 include_once("lib/module/moduleHandler.php");
 
 // Module Handler is started and manages all modules and the display of the web application.
+$params = array_merge($_GET, $_POST);
+
+if (!isset($params['module']))
+{
+    $params['module'] = 'login';
+}
+
 $moduleHandler = new ModuleHandler();
-$moduleHandler->Handle([]);
+$moduleHandler->Handle($params);
 
 ?>

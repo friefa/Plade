@@ -18,12 +18,12 @@ class FooterModule extends Module
     /**
      * This method represents the end of the website.
      */
-    function render(array $params)
+    function render(array $params) : string
     {
         $template = file_get_contents("modules/footerModule/templates/footer.html");
         parent::InsertReplacements($template, $params);
 
-        echo $template;
+        return $template;
     }
 }
 

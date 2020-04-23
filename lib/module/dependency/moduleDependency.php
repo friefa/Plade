@@ -9,6 +9,7 @@
 
 // Implementations
 include_once('lib/module/dependency/moduleDependencyType.php');
+include_once('lib/utils/urlUtils.php');
 
 /**
  * This object represents a modular dependency.
@@ -18,6 +19,7 @@ class ModuleDependency
     // Data fields
     public string $FileName;
     public int $Type;
+    public bool $CDN;
 
     /**
      * This method initializes a modular dependency by its name and type.
@@ -26,6 +28,15 @@ class ModuleDependency
     {   
         $this->FileName = $dependencyName;
         $this->Type = ModuleDependencyType::GetType($dependencyType);
+
+        if (UrlUtils::IsValid($dependencyName))
+        {
+            $this->CDN = true;
+        }
+        else 
+        {
+            $this->CDN = false;
+        }
 
         if ($this->Type == -1)
         {

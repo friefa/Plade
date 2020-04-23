@@ -18,7 +18,7 @@ abstract class Module
     /**
      * This abstract method represents a module.
      */
-    abstract protected function render(array $params);
+    abstract protected function render(array $params) : string;
 
     /**
      * This method inserts all values into a template.
@@ -34,6 +34,58 @@ abstract class Module
         }
 
         return $template;
+    }
+
+    /**
+     * This function insert all hooks into the template.
+     */
+    protected function InsertHooks(string &$template, array $dependencies, array $params)
+    {
+        foreach ($dependencies as $dependency)
+        {
+            if ($dependency->Type == ModuleDependencyType::Module)
+            {
+                $hook = "{hook.".$dependency->FileName."}";
+                $module = self::GetByName($dependency->FileName, ModuleHandler::$LoadedModules)->render($params);
+
+                $template = str_replace($hook, $module, $template);
+            }
+        }
+    }
+
+    /**
+     * This function will insert portals (href-links) into its template.
+     */
+    protected function InsertPortals(string &$template, array $dependencies, array $params)
+    {
+        foreach ($dependencies as $dependency)
+        {
+            if ($dependency->Type == ModuleDependencyType::Module)
+            {
+                $hook = "{portal.".$dependency->FileName."}";
+
+                $template = str_replace($hook, 'href="default.php?module='.$dependency->FileName.'"', $template);
+            }
+        }
+    }
+
+    /**
+     * This method search for a module in an array by its name.
+     */
+    public static function GetByName(string $name, array $modules) : ?object
+    {
+        $result = null;
+
+        foreach ($modules as $module)
+        {
+            if ($module->ModuleConfig->Name == $name)
+            {
+                $result = $module;
+                break;
+            }
+        }
+
+        return $result;
     }
 }
 

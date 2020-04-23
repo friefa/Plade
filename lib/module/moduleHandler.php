@@ -17,7 +17,7 @@ include_once("lib/module/dependency/moduleDependencySolver.php");
 class ModuleHandler
 {
     // Data fields
-    private array $LoadedModules = array();
+    public static array $LoadedModules = array();
 
     /**
      * This method handles all modules using given parameters.
@@ -34,20 +34,27 @@ class ModuleHandler
             {
                 $loader = new ModuleLoader();
                 $module = $loader->Load($dirName);
-                $this->LoadedModules[$dirName] = $module;
+                self::$LoadedModules[$dirName] = $module;
             }
         }
 
-        // Hier werden die Abhängigkeiten geladen.
-        $moduleDependencySolver = new ModuleDependencySolver();
-        $dependenciesString = $moduleDependencySolver->SolveLocal($this->LoadedModules["login"], $this->LoadedModules);
-        $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
+        if (isset($params['module']) && isset(self::$LoadedModules[$params['module']]))
+        {
+            // Hier werden die Abhängigkeiten geladen.
+                $moduleDependencySolver = new ModuleDependencySolver();
+                $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules[$params['module']], self::$LoadedModules);
+                $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
 
-        // Hier werden die Module angezeigt
-        $this->LoadedModules["headerModule"]->render($params);
-        $this->LoadedModules["login"]->render($params);
-        $this->LoadedModules["footerModule"]->render($params);
-    }
+                // Hier werden die Module angezeigt
+                echo self::$LoadedModules["headerModule"]->render($params);
+                echo self::$LoadedModules[$params['module']]->render($params);
+                echo self::$LoadedModules["footerModule"]->render($params);
+        }
+        else 
+        {
+            print("[MODULE-HANDLER] Module not found!");
+        }
+    }        
 }
 
 ?>
