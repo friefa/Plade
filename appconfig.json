@@ -1,0 +1,11 @@
+{
+    "EngineVersion":"0.0.3",
+    "EntryModule":"login",
+    "DebugMode":"true",
+    "ReplacementPool":
+    {
+        "applicationName":"BABOOK",
+        "applicationDeveloper":"Fabian Friedl",
+        "githubLink":"https://github.com/friefa/BABOOK/"
+    }
+}
