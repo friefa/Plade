@@ -7,3 +7,4 @@ Features:
 - Automatic loading of modules and resolving their interdependencies
 - Content-Delivery-Network (CDN) dependency support with automatic detection
 - Module to module dependency resolving
+- Possibility of nesting modules into one another
