@@ -18,12 +18,12 @@ class Box extends Module
     /**
      * This method displays the module on the website.
      */
-    function render(array $params)
+    function render(array $params) : string
     {
-        $template = file_get_contents("modules/login/templates/login.html");
+        $template = file_get_contents("modules/box/templates/box.html");
         parent::InsertReplacements($template, $params);
 
-        echo $template;
+        return $template;
     }
 }
 

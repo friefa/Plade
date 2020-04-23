@@ -17,7 +17,7 @@ include_once("lib/module/dependency/moduleDependencySolver.php");
 class ModuleHandler
 {
     // Data fields
-    private array $LoadedModules = array();
+    public static array $LoadedModules = array();
 
     /**
      * This method handles all modules using given parameters.
@@ -34,19 +34,19 @@ class ModuleHandler
             {
                 $loader = new ModuleLoader();
                 $module = $loader->Load($dirName);
-                $this->LoadedModules[$dirName] = $module;
+                self::$LoadedModules[$dirName] = $module;
             }
         }
 
         // Hier werden die Abhängigkeiten geladen.
         $moduleDependencySolver = new ModuleDependencySolver();
-        $dependenciesString = $moduleDependencySolver->SolveLocal($this->LoadedModules["login"], $this->LoadedModules);
+        $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules["login"], self::$LoadedModules);
         $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
 
         // Hier werden die Module angezeigt
-        $this->LoadedModules["headerModule"]->render($params);
-        $this->LoadedModules["login"]->render($params);
-        $this->LoadedModules["footerModule"]->render($params);
+        echo self::$LoadedModules["headerModule"]->render($params);
+        echo self::$LoadedModules["login"]->render($params);
+        echo self::$LoadedModules["footerModule"]->render($params);
     }
 }
 
