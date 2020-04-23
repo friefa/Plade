@@ -15,6 +15,7 @@ abstract class ModuleDependencyType
     const CSS = 0;
     const JS = 1;
     const JSModule = 2;
+    const Module = 3;
 
     /**
      * This method returns the dependency type of a given string.
@@ -34,6 +35,10 @@ abstract class ModuleDependencyType
         else if ($type == "jsmodule")
         {
             $result = ModuleDependencyType::JSModule;
+        }
+        else if ($type == "module")
+        {
+            $result = ModuleDependencyType::Module;
         }
 
         return $result;
