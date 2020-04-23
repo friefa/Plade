@@ -38,16 +38,23 @@ class ModuleHandler
             }
         }
 
-        // Hier werden die Abhängigkeiten geladen.
-        $moduleDependencySolver = new ModuleDependencySolver();
-        $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules["login"], self::$LoadedModules);
-        $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
+        if (isset($params['module']) && isset(self::$LoadedModules[$params['module']]))
+        {
+            // Hier werden die Abhängigkeiten geladen.
+                $moduleDependencySolver = new ModuleDependencySolver();
+                $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules[$params['module']], self::$LoadedModules);
+                $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
 
-        // Hier werden die Module angezeigt
-        echo self::$LoadedModules["headerModule"]->render($params);
-        echo self::$LoadedModules["login"]->render($params);
-        echo self::$LoadedModules["footerModule"]->render($params);
-    }
+                // Hier werden die Module angezeigt
+                echo self::$LoadedModules["headerModule"]->render($params);
+                echo self::$LoadedModules[$params['module']]->render($params);
+                echo self::$LoadedModules["footerModule"]->render($params);
+        }
+        else 
+        {
+            print("[MODULE-HANDLER] Module not found!");
+        }
+    }        
 }
 
 ?>
