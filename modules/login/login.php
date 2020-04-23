@@ -23,6 +23,7 @@ class Login extends Module
         $template = file_get_contents("modules/login/templates/login.html");
         parent::InsertReplacements($template, $params);
         parent::InsertHooks($template, $this->ModuleConfig->Dependencies, $params);
+        parent::InsertPortals($template, $this->ModuleConfig->Dependencies, $params);
 
         return $template;
     }

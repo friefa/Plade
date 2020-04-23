@@ -36,6 +36,9 @@ abstract class Module
         return $template;
     }
 
+    /**
+     * This function insert all hooks into the template.
+     */
     protected function InsertHooks(string &$template, array $dependencies, array $params)
     {
         foreach ($dependencies as $dependency)
@@ -46,6 +49,22 @@ abstract class Module
                 $module = self::GetByName($dependency->FileName, ModuleHandler::$LoadedModules)->render($params);
 
                 $template = str_replace($hook, $module, $template);
+            }
+        }
+    }
+
+    /**
+     * This function will insert portals (href-links) into its template.
+     */
+    protected function InsertPortals(string &$template, array $dependencies, array $params)
+    {
+        foreach ($dependencies as $dependency)
+        {
+            if ($dependency->Type == ModuleDependencyType::Module)
+            {
+                $hook = "{portal.".$dependency->FileName."}";
+
+                $template = str_replace($hook, 'href="default.php?module='.$dependency->FileName.'"', $template);
             }
         }
     }
