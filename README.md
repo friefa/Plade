@@ -6,3 +6,4 @@ Features:
 - Easy creation of dependencies (JS, JS Modules and CSS)
 - Automatic loading of modules and resolving their interdependencies
 - Content-Delivery-Network (CDN) dependency support with automatic detection
+- Module to module dependency resolving
