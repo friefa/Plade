@@ -17,7 +17,7 @@ include_once("lib/module/moduleHandler.php");
 ApplicationConfig::Init();
 
 // Module Handler is started and manages all modules and the display of the web application.
-$params = array_merge($_GET, $_POST);
+$params = array_merge($_GET, $_POST, ApplicationConfig::$Replacements);
 
 if (!isset($params['module']))
 {

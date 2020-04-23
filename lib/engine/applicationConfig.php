@@ -35,6 +35,15 @@ class ApplicationConfig
                 self::$EntryModule = $json['EngineVersion'];
                 self::$DebugMode = filter_var($json['EngineVersion'], FILTER_VALIDATE_BOOLEAN);
                 self::$Replacements = $json['Replacements'];
+
+                $buffer = array();
+
+                foreach(self::$Replacements as $key => $value)
+                {
+                    $buffer['%'.$key.'%'] = $value;
+                }
+
+                self::$Replacements = $buffer;
             }
             else
             {

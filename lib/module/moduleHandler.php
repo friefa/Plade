@@ -43,7 +43,7 @@ class ModuleHandler
             // Hier werden die Abhängigkeiten geladen.
                 $moduleDependencySolver = new ModuleDependencySolver();
                 $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules[$params['module']], self::$LoadedModules);
-                $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%title%" => "BABOOK"]);
+                $params = array_merge($params, ["%dependencies%" => $dependenciesString]);
 
                 // Hier werden die Module angezeigt
                 echo self::$LoadedModules["headerModule"]->render($params);
