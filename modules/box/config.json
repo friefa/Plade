@@ -1,0 +1,11 @@
+{
+    "ModuleName":"box",
+    "Developer":"Fabian Friedl",
+    "Version":"0.0.1",
+    "Entry":"box.php",
+    "EntryClass":"Box",
+    "Dependencies":
+    {
+      
+    }
+}
