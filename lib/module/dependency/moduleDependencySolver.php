@@ -17,13 +17,30 @@ class ModuleDependencySolver
      * This function resolves all dependencies of all modules.
      * If a dependency could not be resolved, an error is displayed.
      */
-    public function Solve(array $modules) : string
+    public function Solve(array $modules, &$addedDependencies = []) : string
     {
         $result = "";
-        $addedDependencies = array();
 
         foreach ($modules as $module)
         {
+            foreach ($module->ModuleConfig->Dependencies as $dependency)
+            {
+                if ($dependency->Type == ModuleDependencyType::Module)
+                {
+                    $_module = Module::GetByName($dependency->FileName, $modules);
+
+                    if ($_module !== null)
+                    {
+                        $addedDependencies[] = $dependency->FileName;
+                        $result .= $this->SolveLocal($_module, $modules, $addedDependencies);
+                    }
+                    else
+                    {
+                        print("[MODULE-DEPENDENCY-SOLVER] Failed to assign the module '".$dependency->FileName."'!<br>");
+                    }
+                }
+            }
+
             foreach ($module->ModuleConfig->Dependencies as $dependency)
             {
                 if (!in_array($dependency->FileName, $addedDependencies) && ($dependency->OwnedBy($module->ModuleConfig->Name) || $dependency->CDN))
@@ -52,10 +69,27 @@ class ModuleDependencySolver
      * This function resolves all dependencies belonging to the module.
      * If a dependency could not be resolved, the function returns an error.
      */
-    public function SolveLocal(object $targetModule, array $modules) : string 
+    public function SolveLocal(object $targetModule, array $modules, array &$addedDependencies = []) : string 
     {
         $result = "";
-        $addedDependencies = array();
+
+        foreach ($targetModule->ModuleConfig->Dependencies as $dependency)
+        {
+            if ($dependency->Type == ModuleDependencyType::Module)
+            {
+                $module = Module::GetByName($dependency->FileName, $modules);
+
+                if ($module !== null)
+                {
+                    $addedDependencies[] = $dependency->FileName;
+                    $result .= $this->SolveLocal($module, $modules, $addedDependencies);
+                }
+                else
+                {
+                    print("[MODULE-DEPENDENCY-SOLVER] Failed to locally assign the module '".$dependency->FileName."'!<br>");
+                }
+            }
+        }
 
         foreach ($modules as $module)
         {
@@ -73,7 +107,7 @@ class ModuleDependencySolver
         {
             if (!in_array($dependency->FileName, $addedDependencies))
             {
-                print("[MODULE-DEPENDENCY-SOLVER] Failed to solve local dependency '".$dependency->FileName."'!");
+                print("[MODULE-DEPENDENCY-SOLVER] Failed to solve local dependency '".$dependency->FileName."'!<br>");              
             }
         }
 

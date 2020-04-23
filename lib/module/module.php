@@ -35,6 +35,25 @@ abstract class Module
 
         return $template;
     }
+
+    /**
+     * This method search for a module in an array by its name.
+     */
+    public static function GetByName(string $name, array $modules) : ?object
+    {
+        $result = null;
+
+        foreach ($modules as $module)
+        {
+            if ($module->ModuleConfig->Name == $name)
+            {
+                $result = $module;
+                break;
+            }
+        }
+
+        return $result;
+    }
 }
 
 ?>
