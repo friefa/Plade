@@ -8,3 +8,4 @@ Features:
 - Content-Delivery-Network (CDN) dependency support with automatic detection
 - Module to module dependency resolving
 - Possibility of nesting modules into one another (Hooks)
+- Possibility of linking modules to each other (Portals)
