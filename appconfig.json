@@ -2,7 +2,7 @@
     "EngineVersion":"0.0.3",
     "EntryModule":"login",
     "DebugMode":"true",
-    "ReplacementPool":
+    "Replacements":
     {
         "applicationName":"BABOOK",
         "applicationDeveloper":"Fabian Friedl",
