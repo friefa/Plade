@@ -14,9 +14,12 @@ class ApplicationConfig
 {
     // Data fields
     public const CONFIG_FILE = "appconfig.json";
+    public static bool $Initialized = false;
     public static string $EngineVersion;
     public static string $EntryModule;
     public static bool $DebugMode;
+    public static bool $IpLogging;
+    public static string $LogFile;
     public static array $Replacements;
 
     /**
@@ -32,8 +35,10 @@ class ApplicationConfig
             if (self::ValidateJsonArray($json))
             {
                 self::$EngineVersion = $json['EngineVersion'];
-                self::$EntryModule = $json['EngineVersion'];
-                self::$DebugMode = filter_var($json['EngineVersion'], FILTER_VALIDATE_BOOLEAN);
+                self::$EntryModule = $json['EntryModule'];
+                self::$DebugMode = filter_var($json['DebugMode'], FILTER_VALIDATE_BOOLEAN);
+                self::$LogFile = $json['LogFile'];
+                self::$IpLogging = filter_var($json["IpLogging"], FILTER_VALIDATE_BOOLEAN);
                 self::$Replacements = $json['Replacements'];
 
                 $buffer = array();
@@ -44,6 +49,8 @@ class ApplicationConfig
                 }
 
                 self::$Replacements = $buffer;
+
+                self::$Initialized = true;
             }
             else
             {
@@ -61,7 +68,7 @@ class ApplicationConfig
      */
     private static function ValidateJsonArray(array $arr) : bool
     {
-        return isset($arr['EngineVersion'], $arr['EntryModule'], $arr['DebugMode'], $arr['Replacements']);
+        return isset($arr['EngineVersion'], $arr['EntryModule'], $arr['DebugMode'], $arr['Replacements'], $arr['LogFile'], $arr["IpLogging"]);
     }
 }
 

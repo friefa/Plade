@@ -1,7 +1,9 @@
 {
     "EngineVersion":"0.0.3",
     "EntryModule":"login",
-    "DebugMode":"true",
+    "DebugMode":"false",
+    "IpLogging":"true",
+    "LogFile":"logs.txt",
     "Replacements":
     {
         "applicationName":"Plade",
