@@ -1,7 +1,7 @@
 <?php
 /**
  * Plade
- * LoggingFile
+ * LogFile
  * Fabian Friedl
  * 25.04.2020
  * All rights reserved.
@@ -11,7 +11,7 @@
  * This class represents a log file.
  * The object can be used to log data.
  */
-class LoggingFile
+class LogFile
 {
     // Data fields
     public string $FileName;
@@ -26,7 +26,7 @@ class LoggingFile
 
         if (!file_exists($filename))
         {
-            file_put_contents($filename, $this->GetPrefix()."Logging file was created by application.".PHP_EOL);
+            file_put_contents($filename, $this->GetPrefix()."Log-file was created by application".PHP_EOL);
         }
     }
 
@@ -40,9 +40,17 @@ class LoggingFile
         if (isset($_SERVER["REMOTE_ADDR"]))
         {
             $ip = $_SERVER["REMOTE_ADDR"];
+
+            if ($ip == "::1" || $ip = "127.0.0.1")
+                $ip = "localhost";
         }
 
-        return date("[d.m.Y H:i:s::v] ".$ip.": ");
+        $ip = "(".$ip.") ";
+
+        if (!ApplicationConfig::$IpLogging)
+            $ip = "";
+
+        return date("[d.m.Y H:i:s]")." ".$ip;
     }
 
     /**
