@@ -38,15 +38,19 @@ class ModuleLoader
                     $module->ModuleConfig = $moduleConfig;
                     return $module;
                 }
+                else
+                {
+                    Logger::Log("Initialization of the module '".$name."' failed");
+                }
             }
             else
             {
-                print("[MODULE-LOADER] The version of module '".$name."' is incompatible with this engine version!<br>");   
+                Logger::Log("The version of module '".$name."' is incompatible with this engine version (".ApplicationConfig::$EngineVersion.")");
             }            
         }
         else
         {
-            print("[MODULE-LOADER] Module '".$name."' not found!<br>");
+            Logger::Log("Module '".$name."' not found");
         }
 
         return null;

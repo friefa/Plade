@@ -52,7 +52,7 @@ class ModuleHandler
         }
         else 
         {
-            print("[MODULE-HANDLER] Module not found!");
+            Logger::Log("Entry module not found");
         }
     }        
 }
