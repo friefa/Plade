@@ -19,27 +19,34 @@ class ModuleLoader
      * This method loads a module by its name.
      * If the module could not be found or loaded null is returned.
      */
-    public function Load(string $name) : object
+    public function Load(string $name) : ?object
     {
         if (is_dir("modules/".$name))
         {
             $moduleConfig = new ModuleConfig();
             $moduleConfig->Init($name);
 
-            include_once("modules/".$name."/".$moduleConfig->Entry);
-
-            $class = $moduleConfig->EntryClass;
-            $module = new $class();            
-
-            if ($module !== null)
+            if ($moduleConfig->Version == ApplicationConfig::$EngineVersion)
             {
-                $module->ModuleConfig = $moduleConfig;
-                return $module;
+                include_once("modules/".$name."/".$moduleConfig->Entry);
+
+                $class = $moduleConfig->EntryClass;
+                $module = new $class();            
+
+                if ($module !== null)
+                {
+                    $module->ModuleConfig = $moduleConfig;
+                    return $module;
+                }
             }
+            else
+            {
+                print("[MODULE-LOADER] The version of module '".$name."' is incompatible with this engine version!<br>");   
+            }            
         }
         else
         {
-            print("[MODULE-LOADER] Module '".$name."' not found!");
+            print("[MODULE-LOADER] Module '".$name."' not found!<br>");
         }
 
         return null;
