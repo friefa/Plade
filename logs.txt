@@ -1,0 +1,3 @@
+[25.04.2020 17:34:47] (localhost) Log-file was created by application
+[25.04.2020 17:52:08] (localhost) <Logger> Failed to locally assign the module 'boxs'
+[25.04.2020 17:52:08] (localhost) <Logger> Failed to solve local dependency 'boxs'

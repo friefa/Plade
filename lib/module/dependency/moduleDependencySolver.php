@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * ModuleDependencySolver
  * Fabian Friedl
  * 19.04.2020
@@ -36,7 +36,7 @@ class ModuleDependencySolver
                     }
                     else
                     {
-                        print("[MODULE-DEPENDENCY-SOLVER] Failed to assign the module '".$dependency->FileName."'!<br>");
+                        Logger::Log("Failed to assign the module '".$dependency->FileName."'");
                     }
                 }
             }
@@ -57,7 +57,7 @@ class ModuleDependencySolver
             {
                 if (!in_array($dependency->FileName, $addedDependencies))
                 {
-                    print("[MODULE-DEPENDENCY-SOLVER] Failed to solve dependency '".$dependency->FileName."'!");
+                    Logger::Log("Failed to solve dependency '".$dependency->FileName."'");
                 }
             }
         }
@@ -86,7 +86,7 @@ class ModuleDependencySolver
                 }
                 else
                 {
-                    print("[MODULE-DEPENDENCY-SOLVER] Failed to locally assign the module '".$dependency->FileName."'!<br>");
+                    Logger::Log("Failed to locally assign the module '".$dependency->FileName."'");
                 }
             }
         }
@@ -107,7 +107,7 @@ class ModuleDependencySolver
         {
             if (!in_array($dependency->FileName, $addedDependencies))
             {
-                print("[MODULE-DEPENDENCY-SOLVER] Failed to solve local dependency '".$dependency->FileName."'!<br>");              
+                Logger::Log("Failed to solve local dependency '".$dependency->FileName."'");             
             }
         }
 

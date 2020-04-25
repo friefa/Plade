@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * ModuleHandler
  * Fabian Friedl
  * 19.04.2020
@@ -52,7 +52,7 @@ class ModuleHandler
         }
         else 
         {
-            print("[MODULE-HANDLER] Module not found!");
+            Logger::Log("Entry module not found");
         }
     }        
 }
