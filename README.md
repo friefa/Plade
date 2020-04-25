@@ -12,4 +12,4 @@ Features:
 - Fully commented and documented
 
 Detailed instructions could be found in the wiki:
-https://github.com/friefa/BABOOK/wiki
+https://github.com/friefa/plade/wiki
