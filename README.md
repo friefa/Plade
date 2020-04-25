@@ -1,4 +1,4 @@
-BABOOK
+Plade
 Example page for PHP-side plugin system (here called modules).
 
 Features:
