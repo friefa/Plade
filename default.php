@@ -8,27 +8,13 @@
  */
 
 // Implementations
-include_once("lib/engine/applicationConfig.php");
-include_once("lib/module/module.php");
-include_once("lib/module/moduleLoader.php");
-include_once("lib/module/moduleHandler.php");
-include_once("lib/logging/logger.php");
-include_once("lib/database/databaseHandler.php");
+include_once("lib/engine/engine.php");
 
-// Initialize the application
-ApplicationConfig::Init();
-Logger::Init(ApplicationConfig::$LogFile);
-DatabaseHandler::Init(ApplicationConfig::$Databases);
+// Get all parameters
+$params = array_merge($_POST, $_GET);
 
-// Module Handler is started and manages all modules and the display of the web application.
-$params = array_merge($_GET, $_POST, ApplicationConfig::$Replacements);
-
-if (!isset($params['module']))
-{
-    $params['module'] = ApplicationConfig::$EntryModule;
-}
-
-$moduleHandler = new ModuleHandler();
-$moduleHandler->Handle($params);
+// Start the web application engine
+$engine = new Engine();
+$engine->Execute($params);
 
 ?>
