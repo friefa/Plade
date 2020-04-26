@@ -13,10 +13,12 @@ include_once("lib/module/module.php");
 include_once("lib/module/moduleLoader.php");
 include_once("lib/module/moduleHandler.php");
 include_once("lib/logging/logger.php");
+include_once("lib/database/databaseHandler.php");
 
-// Initialize the application configuration
+// Initialize the application
 ApplicationConfig::Init();
-Logger::Init();
+Logger::Init(ApplicationConfig::$LogFile);
+DatabaseHandler::Init(ApplicationConfig::$Databases);
 
 // Module Handler is started and manages all modules and the display of the web application.
 $params = array_merge($_GET, $_POST, ApplicationConfig::$Replacements);

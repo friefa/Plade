@@ -36,7 +36,7 @@ class ModuleDependencySolver
                     }
                     else
                     {
-                        Logger::Log("Failed to assign the module '".$dependency->FileName."'");
+                        Logger::Log("Failed to assign the module '".$dependency->FileName."'", $this);
                     }
                 }
             }
@@ -57,7 +57,7 @@ class ModuleDependencySolver
             {
                 if (!in_array($dependency->FileName, $addedDependencies))
                 {
-                    Logger::Log("Failed to solve dependency '".$dependency->FileName."'");
+                    Logger::Log("Failed to solve dependency '".$dependency->FileName."'", $this);
                 }
             }
         }
@@ -86,7 +86,7 @@ class ModuleDependencySolver
                 }
                 else
                 {
-                    Logger::Log("Failed to locally assign the module '".$dependency->FileName."'");
+                    Logger::Log("Failed to locally assign the module '".$dependency->FileName."'", $this);
                 }
             }
         }
@@ -107,7 +107,7 @@ class ModuleDependencySolver
         {
             if (!in_array($dependency->FileName, $addedDependencies))
             {
-                Logger::Log("Failed to solve local dependency '".$dependency->FileName."'");             
+                Logger::Log("Failed to solve local dependency '".$dependency->FileName."'", $this);             
             }
         }
 

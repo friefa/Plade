@@ -1,3 +1,5 @@
-[25.04.2020 17:34:47] (localhost) Log-file was created by application
-[25.04.2020 17:52:08] (localhost) <Logger> Failed to locally assign the module 'boxs'
-[25.04.2020 17:52:08] (localhost) <Logger> Failed to solve local dependency 'boxs'
+[26.04.2020 01:50:22] (localhost) Log-file was created by application
+[26.04.2020 01:59:35] (localhost) <Repository> Object was not found in database
+[26.04.2020 02:00:26] (localhost) <Repository> Object 'test' was not found in database
+[26.04.2020 02:03:00] (localhost) <Repository> Object 'test' was not found in database
+[26.04.2020 02:03:01] (localhost) <Repository> Object 'test' was not found in database

@@ -64,12 +64,12 @@ class ModuleConfig
             }
             else
             {
-                Logger::Log("Invalid config syntax of ".$name);
+                Logger::Log("Invalid config syntax of ".$name, $this);
             }
         }
         else
         {
-            Logger::Log("Config of module '".$name."' not found");
+            Logger::Log("Config of module '".$name."' not found", $this);
         }
     }
 

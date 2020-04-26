@@ -52,7 +52,7 @@ class ModuleHandler
         }
         else 
         {
-            Logger::Log("Entry module not found");
+            Logger::Log("Entry module not found", $this);
         }
     }        
 }

@@ -22,26 +22,22 @@ class Logger
     /**
      * This method initializes the global logger.
      */
-    public static function Init() : void
+    public static function Init(string $filename) : void
     {
-        if (ApplicationConfig::$Initialized)
+        self::$LogFile = new LogFile(ApplicationConfig::$LogFile);
+        self::$Initialized = true;
+    }
+
+    public static function Log(string $str, $class) : void
+    {
+        if (is_string($class))
         {
-            self::$LogFile = new LogFile(ApplicationConfig::$LogFile);
-            self::$Initialized = true;
+            $str = "<".$class."> ".$str;
         }
         else
         {
-            print("[LOGGER-WARNING] Application configuration is not initialized correctly!");
-        }
-    }
-
-    /**
-     * This method can be used globally to log errors.
-     * If the DebugMode is turned on, this method also prints the errors on the page.
-     */
-    public static function Log(string $str) : void
-    {
-        $str = "<".get_called_class()."> ".$str;
+            $str = "<".get_class($class)."> ".$str;
+        }  
 
         if (self::$Initialized)
         {
