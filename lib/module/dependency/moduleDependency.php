@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * ModuleDependency
  * Fabian Friedl
  * 19.04.2020
@@ -40,7 +40,7 @@ class ModuleDependency
 
         if ($this->Type == -1)
         {
-            print("[MODULE-DEPENDENCY] Invalid dependency type '".$dependencyType."'");
+            Logger::Log("Invalid dependency type '".$dependencyType."'", $this);
         }
     }
 

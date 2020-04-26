@@ -1,0 +1,25 @@
+{
+    "EngineVersion":"0.0.3",
+    "EntryModule":"login",
+    "DebugMode":"false",
+    "IpLogging":"true",
+    "LogFile":"logs.txt",
+    "Replacements":
+    {
+        "applicationName":"Plade",
+        "applicationDeveloper":"Fabian Friedl",
+        "githubLink":"https://github.com/friefa/plade/"
+    },    
+
+    "Databases":
+    {
+        "Test":
+        {
+            "Database":"test",
+            "Host":"127.0.0.1",
+            "Port":"3306",
+            "User":"root",
+            "Password":""
+        }
+    }
+}

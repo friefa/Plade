@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * Application
  * Fabian Friedl
  * 19.04.2020
@@ -8,19 +8,13 @@
  */
 
 // Implementations
-include_once("lib/module/module.php");
-include_once("lib/module/moduleLoader.php");
-include_once("lib/module/moduleHandler.php");
+include_once("lib/engine/engine.php");
 
-// Module Handler is started and manages all modules and the display of the web application.
-$params = array_merge($_GET, $_POST);
+// Get all parameters
+$params = array_merge($_POST, $_GET);
 
-if (!isset($params['module']))
-{
-    $params['module'] = 'login';
-}
-
-$moduleHandler = new ModuleHandler();
-$moduleHandler->Handle($params);
+// Start the web application engine
+$engine = new Engine();
+$engine->Execute($params);
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * ModuleLoader
  * Fabian Friedl
  * 19.04.2020
@@ -19,27 +19,38 @@ class ModuleLoader
      * This method loads a module by its name.
      * If the module could not be found or loaded null is returned.
      */
-    public function Load(string $name) : object
+    public function Load(string $name) : ?object
     {
         if (is_dir("modules/".$name))
         {
             $moduleConfig = new ModuleConfig();
             $moduleConfig->Init($name);
 
-            include_once("modules/".$name."/".$moduleConfig->Entry);
-
-            $class = $moduleConfig->EntryClass;
-            $module = new $class();            
-
-            if ($module !== null)
+            if ($moduleConfig->Version == ApplicationConfig::$EngineVersion)
             {
-                $module->ModuleConfig = $moduleConfig;
-                return $module;
+                include_once("modules/".$name."/".$moduleConfig->Entry);
+
+                $class = $moduleConfig->EntryClass;
+                $module = new $class();            
+
+                if ($module !== null)
+                {
+                    $module->ModuleConfig = $moduleConfig;
+                    return $module;
+                }
+                else
+                {
+                    Logger::Log("Initialization of the module '".$name."' failed", $this);
+                }
             }
+            else
+            {
+                Logger::Log("The version of module '".$name."' is incompatible with this engine version (".ApplicationConfig::$EngineVersion.")", $this);
+            }            
         }
         else
         {
-            print("[MODULE-LOADER] Module '".$name."' not found!");
+            Logger::Log("Module '".$name."' not found", $this);
         }
 
         return null;

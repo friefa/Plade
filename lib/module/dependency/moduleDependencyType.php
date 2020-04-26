@@ -1,6 +1,6 @@
 <?php
 /**
- * BABOOK
+ * Plade
  * ModuleDependencyType
  * Fabian Friedl
  * 19.04.2020
