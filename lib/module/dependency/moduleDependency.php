@@ -40,7 +40,7 @@ class ModuleDependency
 
         if ($this->Type == -1)
         {
-            Logger::Log("Invalid dependency type '".$dependencyType."'");
+            Logger::Log("Invalid dependency type '".$dependencyType."'", $this);
         }
     }
 

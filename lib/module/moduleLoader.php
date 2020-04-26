@@ -40,17 +40,17 @@ class ModuleLoader
                 }
                 else
                 {
-                    Logger::Log("Initialization of the module '".$name."' failed");
+                    Logger::Log("Initialization of the module '".$name."' failed", $this);
                 }
             }
             else
             {
-                Logger::Log("The version of module '".$name."' is incompatible with this engine version (".ApplicationConfig::$EngineVersion.")");
+                Logger::Log("The version of module '".$name."' is incompatible with this engine version (".ApplicationConfig::$EngineVersion.")", $this);
             }            
         }
         else
         {
-            Logger::Log("Module '".$name."' not found");
+            Logger::Log("Module '".$name."' not found", $this);
         }
 
         return null;
