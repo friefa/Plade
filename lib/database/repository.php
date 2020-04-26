@@ -30,11 +30,9 @@ abstract class Repository
 
     public abstract function Update(object $obj);
 
-    public abstract function Load(object $obj);
+    public abstract function Select(object &$obj);
 
-    public abstract function LoadAll();
-
-    public abstract function LoadWhere(object $obj);
+    public abstract function SelectWhere(object $obj) : array;
 }
 
 ?>
