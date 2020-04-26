@@ -24,7 +24,7 @@ abstract class Repository
     }
 
     // Abstract implementations
-    public abstract function Add(object $obj);
+    public abstract function Add(object &$obj);
 
     public abstract function Delete(object $obj);
 
