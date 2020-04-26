@@ -20,6 +20,7 @@ class ApplicationConfig
     public static bool $DebugMode;
     public static bool $IpLogging;
     public static string $LogFile;
+    public static array $Databases;
     public static array $Replacements;
 
     /**
@@ -40,6 +41,7 @@ class ApplicationConfig
                 self::$LogFile = $json['LogFile'];
                 self::$IpLogging = filter_var($json["IpLogging"], FILTER_VALIDATE_BOOLEAN);
                 self::$Replacements = $json['Replacements'];
+                self::$Databases = $json["Databases"];
 
                 $buffer = array();
 
