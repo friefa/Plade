@@ -9,5 +9,23 @@
         "https://fonts.googleapis.com/icon?family=Material+Icons":"css",
         "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css":"css",
         "https://code.getmdl.io/1.3.0/material.min.js":"jsdefer"
+    },
+    "Meta":
+    {
+        "tag":
+        {
+            "name":"description",
+            "content":"Example"
+        },
+        "tag2":
+        {
+            "name":"keywords",
+            "content":"Example, example"
+        },
+        "tag3":
+        {
+            "http-equiv":"refresh",
+            "content":"3"
+        }
     }
 }
