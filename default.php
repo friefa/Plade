@@ -10,8 +10,10 @@
 // Implementations
 include_once("lib/engine/engine.php");
 
+session_start();
+
 // Get all parameters
-$params = array_merge($_POST, $_GET);
+$params = array_merge($_POST, $_GET, $_SESSION);
 
 // Start the web application engine
 $engine = new Engine();
