@@ -7,6 +7,9 @@
  * All rights reserved.
  */
 
+/**
+ * This class is for security reasons the configuration file for the databases.
+ */
 abstract class Databases
 {
     const Databases = array(
