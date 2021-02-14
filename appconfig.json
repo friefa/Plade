@@ -1,5 +1,5 @@
 {
-    "EngineVersion":"0.0.3",
+    "EngineVersion":"0.0.4",
     "EntryModule":"login",
     "DebugMode":"false",
     "IpLogging":"true",

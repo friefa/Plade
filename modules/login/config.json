@@ -1,7 +1,7 @@
 {
     "ModuleName":"login",
     "Developer":"Fabian Friedl",
-    "Version":"0.0.3",
+    "Version":"0.0.4",
     "Entry":"login.php",
     "EntryClass":"Login",
     "Dependencies":
