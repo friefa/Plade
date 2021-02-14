@@ -29,7 +29,7 @@ abstract class DatabaseHandler
         {
             if (self::Valid($value))
             {
-                self::$Databases[$key] = new Database($value["Database"], $value["User"], $value["Host"], $value["Port"], $value["Password"]);
+                self::$Databases[$key] = new Database($value["Name"], $value["User"], $value["Host"], $value["Port"], $value["Password"]);
             }
             else
             {
@@ -43,7 +43,7 @@ abstract class DatabaseHandler
      */
     private static function Valid(array $params) : bool
     {
-        return isset($params["Database"], $params["User"], $params["Host"], $params["Port"], $params["Password"]);
+        return isset($params["Name"], $params["User"], $params["Host"], $params["Port"], $params["Password"]);
     }
 }
 
