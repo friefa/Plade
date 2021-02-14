@@ -10,6 +10,7 @@
 // Implementations
 include_once('lib/module/dependency/moduleDependency.php');
 include_once('lib/module/dependency/moduleDependencyType.php');
+include_once('lib/module/meta/moduleMeta.php');
 
 /**
  * This object represents the configuration file of a module.
@@ -24,6 +25,7 @@ class ModuleConfig
     public string $Entry;
     public string $EntryClass;
     public array $Dependencies;
+    public array $Meta;
 
     /**
      * This method initializes the configuration object.
@@ -50,17 +52,43 @@ class ModuleConfig
                 $this->Entry = $configFileJson["Entry"];
                 $this->EntryClass = $configFileJson["EntryClass"];
                 
-                $deps = $configFileJson["Dependencies"];
-
-                $this->Dependencies = array();
-
-                foreach ($deps as $key => $value)
+                if (isset($configFileJson["Dependencies"]))
                 {
-                    $moduleDependency = new ModuleDependency();
-                    $moduleDependency->Init($key, $value);
+                    $deps = $configFileJson["Dependencies"];
 
-                    $this->Dependencies[] = $moduleDependency;
-                }
+                    $this->Dependencies = array();
+
+                    foreach ($deps as $key => $value)
+                    {
+                        $moduleDependency = new ModuleDependency();
+                        $moduleDependency->Init($key, $value);
+
+                        $this->Dependencies[] = $moduleDependency;
+                    }
+                }                
+
+                if (isset($configFileJson["Meta"]))
+                {
+                    $this->Meta = array();
+
+                    $deps = $configFileJson["Meta"];
+
+                    foreach ($deps as $key => $value)
+                    {
+                        $moduleMeta = new ModuleMeta();
+                        $moduleMetaTagArray = array();
+
+                        foreach ($value as $k => $v)
+                        {
+                            $moduleMetaTag = new ModuleMetaTag();
+                            $moduleMetaTag->Init($k, $v);
+                            $moduleMetaTagArray[] = $moduleMetaTag;
+                        }
+
+                        $moduleMeta->Init($key, $moduleMetaTagArray);
+                        $this->Meta[] = $moduleMeta;
+                    }
+                }                
             }
             else
             {

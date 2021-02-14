@@ -10,6 +10,7 @@
 // Implementations
 include_once("lib/module/moduleLoader.php");
 include_once("lib/module/dependency/moduleDependencySolver.php");
+include_once("lib/module/meta/moduleMetaSolver.php");
 
 /**
  * This object handles all modules using given parameters.
@@ -43,7 +44,15 @@ class ModuleHandler
             // Hier werden die Abhängigkeiten geladen.
                 $moduleDependencySolver = new ModuleDependencySolver();
                 $dependenciesString = $moduleDependencySolver->SolveLocal(self::$LoadedModules[$params['module']], self::$LoadedModules);
-                $params = array_merge($params, ["%dependencies%" => $dependenciesString]);
+                $metaString = "";
+
+                if (isset(self::$LoadedModules[$params['module']]->ModuleConfig->Meta))
+                {
+                    $moduleMetaSolver = new ModuleMetaSolver();
+                    $metaString = $moduleMetaSolver->Solve(self::$LoadedModules[$params['module']]->ModuleConfig->Meta);
+                }
+
+                $params = array_merge($params, ["%dependencies%" => $dependenciesString, "%meta%" => $metaString]);
 
                 // Hier werden die Module angezeigt
                 echo self::$LoadedModules["headerModule"]->render($params);
