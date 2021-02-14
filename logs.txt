@@ -14,3 +14,11 @@
 [14.02.2021 12:01:35] (localhost) <ModuleLoader> The version of module 'headerModule' is incompatible with this engine version (0.0.4)
 [14.02.2021 12:01:35] (localhost) <ModuleLoader> The version of module 'login' is incompatible with this engine version (0.0.4)
 [14.02.2021 12:01:35] (localhost) <ModuleHandler> Entry module not found
+[14.02.2021 21:02:33] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:02:35] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:02:53] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:02:54] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:03:17] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:03:21] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:03:22] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'
+[14.02.2021 21:03:23] (localhost) <DatabaseHandler> Invalid database definition in application configuration of 'Test'

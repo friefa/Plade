@@ -7,6 +7,9 @@
  * All rights reserved.
  */
 
+// Implementations
+include_once("databases.php");
+
 /**
  * This class globally represents all application settings of the engine.
  */
@@ -40,17 +43,20 @@ class ApplicationConfig
                 self::$DebugMode = filter_var($json['DebugMode'], FILTER_VALIDATE_BOOLEAN);
                 self::$LogFile = $json['LogFile'];
                 self::$IpLogging = filter_var($json["IpLogging"], FILTER_VALIDATE_BOOLEAN);
-                self::$Replacements = $json['Replacements'];
-                self::$Databases = $json["Databases"];
+                self::$Replacements = (isset($json['Replacements'])) ? $json["Replacements"] : array();
+                self::$Databases = Databases::Databases;
 
-                $buffer = array();
-
-                foreach(self::$Replacements as $key => $value)
+                if (self::$Replacements != null)
                 {
-                    $buffer['%'.$key.'%'] = $value;
-                }
+                    $buffer = array();
 
-                self::$Replacements = $buffer;
+                    foreach(self::$Replacements as $key => $value)
+                    {
+                        $buffer['%'.$key.'%'] = $value;
+                    }
+
+                    self::$Replacements = $buffer;
+                }                
 
                 self::$Initialized = true;
             }
