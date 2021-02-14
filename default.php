@@ -12,6 +12,13 @@ include_once("lib/engine/engine.php");
 
 session_start();
 
+if (isset($_GET['module'])) 
+{
+    $_SESSION['module'] = $_GET['module'];
+    header("Location: /");
+}
+
+
 // Get all parameters
 $params = array_merge($_POST, $_GET, $_SESSION);
 
