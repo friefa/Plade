@@ -1,13 +1,19 @@
 {
-    "EngineVersion":"0.0.4",
-    "EntryModule":"login",
-    "DebugMode":"false",
-    "IpLogging":"true",
-    "LogFile":"logs.txt",
+    "EngineVersion": "0.0.4",
+    "EntryModule": "login",
+    "DebugMode": "false",
+    "IpLogging": "true",
+    "LogFile": "logs.txt",
     "Replacements":
     {
-        "applicationName":"Plade",
-        "applicationDeveloper":"Fabian Friedl",
-        "githubLink":"https://github.com/friefa/plade/"
+        "applicationName": "Plade",
+        "applicationDeveloper": "Fabian Friedl",
+        "githubLink": "https://github.com/friefa/plade/"
+    },
+    "Settings":
+    {
+        "Example1": "ValueOfExample1",
+        "Example2": "ValueOfExample2",
+        "Example3": "ValueOfExample3"
     }
 }
