@@ -1,6 +1,6 @@
 # Plade
 
-Example page for PHP-side plugin system (here called modules).
+A modular PHP-Application and templating Engine.
 
 <div align="center">
 <a href="https://github.com/friefa/Plade/releases">
