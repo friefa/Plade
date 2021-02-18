@@ -1,5 +1,7 @@
 # Plade
 
+Example page for PHP-side plugin system (here called modules).
+
 <div align="center">
 <a href="https://github.com/friefa/Plade/releases">
     <img src="https://img.shields.io/badge/Latest%20Release-0.0.3-orange">
@@ -8,8 +10,6 @@
     <img src="https://img.shields.io/badge/License-MIT-green">
 </a>
 </div>
-
-Example page for PHP-side plugin system (here called modules).
 
 ## Features:
 
