@@ -1,7 +1,18 @@
-Plade
+# Plade
+
+<div align="center">
+<a href="https://github.com/friefa/Plade/releases">
+    <img src="https://img.shields.io/badge/Latest%20Release-0.0.3-orange">
+</a>
+<a href="https://github.com/friefa/Plade/blob/develop/LICENSE.md">
+    <img src="https://img.shields.io/badge/License-MIT-green">
+</a>
+</div>
+
 Example page for PHP-side plugin system (here called modules).
 
-Features:
+## Features:
+
 - Easily programmable and configurable PHP modules
 - Easy creation of dependencies (JS, JS Modules and CSS)
 - Automatic loading of modules and resolving their interdependencies
