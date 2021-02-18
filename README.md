@@ -9,6 +9,8 @@ A modular PHP-Application and templating Engine.
 <a href="https://github.com/friefa/Plade/blob/develop/LICENSE.md">
     <img src="https://img.shields.io/badge/License-MIT-green">
 </a>
+</br>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2Ffriefa%2FPlade?ref=badge_small" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffriefa%2FPlade.svg?type=small"/></a>
 </div>
 
 ## Features:
