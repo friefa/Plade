@@ -28,6 +28,8 @@ class ModuleHandler
     {
         $dirs = array_diff(scandir("modules"), array('..', '.'));
 
+        $moduleExist = false;
+
         // All modules from the modules folder will be loaded here.
         foreach ($dirs as $dirName)
         {
@@ -36,7 +38,18 @@ class ModuleHandler
                 $loader = new ModuleLoader();
                 $module = $loader->Load($dirName);
                 self::$LoadedModules[$dirName] = $module;
+
+                if ($module->ModuleConfig->Name == $params['module'])
+                {
+                    $moduleExist = true;
+                }
             }
+        }
+        
+        if (!$moduleExist)
+        {
+            Logger::Log("Requested module was not found: " . $params['module'], $this);
+            $params['module'] = ApplicationConfig::$EntryModule;
         }
 
         if (isset($params['module']) && isset(self::$LoadedModules[$params['module']]))
@@ -61,7 +74,7 @@ class ModuleHandler
         }
         else 
         {
-            Logger::Log("Entry module not found", $this);
+            Logger::Log("Entry module was not found: " . $params['module'], $this);
         }
     }        
 }
